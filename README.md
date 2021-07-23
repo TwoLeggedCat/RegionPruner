@@ -1,6 +1,13 @@
 # RegionPruner
 Out-of-game tool to delete region files from Minecraft worlds in which all chunks have been inhabited for under a certain time.
 
+# Why not just delete chunks?
+Two reasons:
+1. Deleting entire region files gives you a nice big buffer to ensure you don't make goofy borders around where a player builds something. While this is still a possibility, for this to happen with this tool, a player would have had to build something right on the border into another region *and* each chunk in that region would have to have been inhabited for less than the the time specified.
+2. More importantly, and the reason for this tool's existence, I personally have had bad experiences with removing individual chunks from region files, and deleting an entire file is much safer, and, in many cases, enough to reduce your world size by a good bit.
+
+If, however, you do want to remove all chunks inhabited for under a certain amount of time, which is the better approach in many cases, I recommend [mcaselector](https://github.com/Querz/mcaselector)'s headless mode, which is built on the same library as this tool.
+
 # Usage
 `java -jar file.jar <region_folder> <time in ticks to use as cutoff>`
 
