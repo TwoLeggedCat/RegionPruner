@@ -8,11 +8,10 @@ Two reasons:
 
 If, however, you do want to remove all chunks inhabited for under a certain amount of time, which is the better approach in many cases, I recommend [mcaselector](https://github.com/Querz/mcaselector)'s headless mode, which is built on the same library as this tool.
 
-# Notice to 1.17 users
-As of 1.17, entities are no longer stored in the normal region files. This tool does **not** prune entity files. I made this tool for my 1.16 world so I could upgrade to 1.17, so this was not a problem. However, if you use it on a world that has already been upgraded to 1.17 (or was created on it) be aware it will leave the entities folder untouched.
-
 # Usage
 `java -jar file.jar <region_folder> <time in ticks to use as cutoff>`
+
+You may prepend `-DRegionPruner.pruneEntityFiles=false` before `-jar` to skip pruning entity files.
 
 # Downloading
 Releases section on the right side, or from Actions at the top (requires a GitHub account).
