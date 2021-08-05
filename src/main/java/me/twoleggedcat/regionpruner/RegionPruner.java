@@ -15,7 +15,6 @@ public class RegionPruner {
         int minTimeToKeep = (20 * 60 * 5); // Cuz we need this initialized
         int deleted = 0;
         long startTime = System.currentTimeMillis();
-        boolean pruneEntities = System.getProperty("RegionPruner.pruneEntities", "true").equalsIgnoreCase("true");
 
         if (args.length < 2)
             fatal("Usage: java -jar RegionPruner.jar <world_folder> <max_ticks>");
@@ -24,6 +23,10 @@ public class RegionPruner {
 
         if (!worldFolder.isDirectory())
             fatal(args[0] + " is not a directory; exiting.");
+
+        boolean pruneEntities =
+                System.getProperty("RegionPruner.pruneEntities", "true").equalsIgnoreCase("true")
+                && worldFolder.toPath().resolve("entities").toFile().isDirectory(); // Worlds <1.17 will not have this folder
 
         try {
             minTimeToKeep = Integer.parseInt(args[1]);
